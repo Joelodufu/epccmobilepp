@@ -6,11 +6,10 @@ import 'package:flutter_app/models/bible_study_model.dart';
 import 'package:flutter_app/widgets/app_buttons.dart';
 import 'package:flutter_app/widgets/app_large_text.dart';
 import 'package:flutter/services.dart' as rootBundle;
-
-import 'package:flutter_app/widgets/app_text.dart';
 import 'package:flutter_app/widgets/responsive_button.dart';
 
 import '../pages/bible_study_page.dart';
+import '../widgets/app_text.dart';
 import '../widgets/profile.dart';
 
 class BibbleStudyPage extends StatefulWidget {
@@ -24,10 +23,7 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
   int bibleStudyIndex = 0;
   @override
   Widget build(BuildContext context) {
-    var requiredAspect =
-        MediaQuery.of(context).size.width > MediaQuery.of(context).size.height
-            ? 1
-            : MediaQuery.of(context).size.width / 540;
+    var requiredAspect =MediaQuery.of(context).size.width > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.width / 540;
 
     return Scaffold(
       body: FutureBuilder(
@@ -56,7 +52,13 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                     Container(
                       width: double.maxFinite,
                       height: requiredAspect * 70,
-                      color: AppColors.mainColor,
+                      
+                      decoration: BoxDecoration(
+                        color: AppColors.mainColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30), 
+                        bottomRight: Radius.circular(30))
+                      ),
                       child: Center(
                         child: AppText(
                           text: "EPCC Bible Study",
@@ -144,8 +146,7 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                                       .toString(),
                                                 ),
                                                 AppText(
-                                                  text: bibleStudyList[index]
-                                                      .date,
+                                                  text: bibleStudyList[index].date,
                                                   size: requiredAspect * 40,
                                                   color: Color.fromARGB(
                                                       255, 95, 95, 95),

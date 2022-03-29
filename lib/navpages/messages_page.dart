@@ -170,6 +170,24 @@ class _MessagePageState extends State<MessagePage> {
                 height: 900,
                 color: Colors.blueGrey.withOpacity(.1),
                 child: Column(children: [
+                   Container(
+                      width: double.maxFinite,
+                      height: requiredAspect * 70,
+                      
+                      decoration: BoxDecoration(
+                        color: AppColors.mainColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30), 
+                        bottomRight: Radius.circular(30))
+                      ),
+                      child: Center(
+                        child: AppText(
+                          text: "Holy Bible",
+                          size:  25,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                  
                   Container(
                     color: Colors.white,
@@ -356,6 +374,7 @@ class _MessagePageState extends State<MessagePage> {
                                     .chapters[chapterIndex][index]
                                     .toString(),
                                 size:30,
+                                color: Colors.black,
                               ),
                             ]),
                         itemCount:

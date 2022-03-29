@@ -56,18 +56,25 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                 color: Color.fromARGB(255, 235, 235, 235),
                 child: Column(
                   children: [
-                    Container(
+                   Container(
                       width: double.maxFinite,
-                      height: size.height*.07,
-                      color: AppColors.mainColor,
+                      height: requiredAspect * 70,
+                      
+                      decoration: BoxDecoration(
+                        color: AppColors.mainColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30), 
+                        bottomRight: Radius.circular(30))
+                      ),
                       child: Center(
                         child: AppText(
-                          text: "EPCC Bible Study",
-                          size:  30,
+                          text:  " 🎡${bibleStudyList[bbIndex].theme}🎡",
+                          size:  25,
                           color: Colors.white,
                         ),
                       ),
                     ),
+                 
                     Container(
                       padding: EdgeInsets.only(
                           left:  20, top:  20),

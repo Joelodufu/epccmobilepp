@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/detail_page.dart';
 import 'package:flutter_app/pages/main_page.dart';
-import 'package:flutter_app/navpages/messages_page.dart';
-import 'package:flutter_app/pages/welcome_page.dart';
-
-import 'misc/colors.dart';
 
 void main() => runApp(const MyApp());
 

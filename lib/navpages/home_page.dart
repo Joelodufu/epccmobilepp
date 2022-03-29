@@ -1,14 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/misc/colors.dart';
-import 'package:flutter_app/navpages/bibble_study_page.dart';
-import 'package:flutter_app/navpages/messages_page.dart';
-import 'package:flutter_app/widgets/app_large_text.dart';
 import 'package:flutter_app/widgets/app_text.dart';
 import 'package:flutter_app/widgets/know_your_pastors.dart';
 import 'package:flutter_app/widgets/paragraph.dart';
-import 'package:flutter_app/widgets/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,6 +16,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+        var requiredAspect =MediaQuery.of(context).size.width > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.width / 540;
+
     if (MediaQuery.of(context).size.width >
         MediaQuery.of(context).size.height) {
       return Scaffold(
@@ -41,6 +38,24 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                 Container(
+                      width: double.maxFinite,
+                      height: requiredAspect * 70,
+                      
+                      decoration: BoxDecoration(
+                        color: AppColors.mainColor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30), 
+                        bottomRight: Radius.circular(30))
+                      ),
+                      child: Center(
+                        child: AppText(
+                          text: "Welcome Home!!!",
+                          size:  25,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                
                 Container(
                   padding: EdgeInsets.only(left: 16),
@@ -137,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                             text:
                                 "In the same way, prayer is essential in this ongoing warfare, Pray Hard and Long. Pray for your brothers and sisters, Keep your eyes open, Keep each other's spirit up so that no one falls behind or drops out",
                             color: Color.fromARGB(255, 0, 0, 0),
-                            size: 30,
+                            size: 25,
                           ),
                         ),
                         SizedBox(
@@ -158,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                             text:
                                 "The reason for prayer is not to convince God that you are really serious about your objective of praying. Rather, it is about what spending time in fellowship with him does in your spirit",
                             color: Color.fromARGB(255, 0, 0, 0),
-                            size: 30,
+                            size: 25,
                             style: FontStyle.italic,
                           ),
                         ),
@@ -169,17 +184,19 @@ class _HomePageState extends State<HomePage> {
                             child: AppText(
                           text: "PRAYER",
                           color: Colors.red,
-                          size: 30,
+                          size: 25,
                         )),
-                        Center(
-                          child: Container(
-                              padding: EdgeInsets.only(left: 10, right: 10),
-                              child: AppText(
-                                text:
-                                    'Dear Father, Thank you for the privilege of fellowship with you through the spirit of prayer',
-                                size: 30,
-                                color: Color.fromARGB(255, 0, 112, 143),
-                              )),
+                        Expanded(
+                          child: Center(
+                            child: Container(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                child: AppText(
+                                  text:
+                                      'Dear Father, Thank you for the privilege of fellowship with you through the spirit of prayer',
+                                  size: 30,
+                                  color: Color.fromARGB(255, 0, 112, 143),
+                                )),
+                          ),
                         ),
                       ],
                     ),

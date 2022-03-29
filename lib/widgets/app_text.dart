@@ -6,7 +6,7 @@ class AppText extends StatelessWidget {
   final String text;
   final Color color;
   final FontStyle style;
-  AppText({Key? key,
+  AppText( {Key? key,
     this.style=FontStyle.normal,
     this.size=16,
     required this.text,
