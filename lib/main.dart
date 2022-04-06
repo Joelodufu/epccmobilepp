@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/AddFire/add_fire.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_app/pages/main_page.dart';
 
-void main() => runApp(const MyApp());
+import 'models/devotional.dart';
+
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(DevotionalAdapter());
+  runApp( MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
