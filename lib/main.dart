@@ -10,6 +10,7 @@ Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(DevotionalAdapter());
+  await Hive.openBox<Devotional>("devotional");
   runApp( MyApp());
 }
 
