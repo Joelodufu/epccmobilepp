@@ -68,6 +68,7 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                       ),
                     ),
                     Container(
+                      color:Colors.white,
                       padding: EdgeInsets.only(
                           left: requiredAspect * 20, top: requiredAspect * 20),
                       child: Row(
