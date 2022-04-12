@@ -22,7 +22,6 @@ class _MainPageState extends State<MainPage> {
   List pages = [
     HomePage(),
     BibbleStudyPage(),
-    SundaySchool(),
     MessagePage(),
     BarItemsPage()
   ];
@@ -50,7 +49,6 @@ class _MainPageState extends State<MainPage> {
           items: const [
             BottomNavigationBarItem(  icon: Icon(Icons.home_outlined), label: "Home", tooltip: "Home "),
             BottomNavigationBarItem(  icon: Icon(Icons.my_library_books_outlined), label: "BS", tooltip: "Bible Stydy "),
-            BottomNavigationBarItem(  icon: Icon(Icons.school_outlined), label: "SS", tooltip: "sunday school"),
             BottomNavigationBarItem(  icon: Icon(Icons.dynamic_form_outlined), label: "MSG", tooltip: "Msg ")
           ],
       ),

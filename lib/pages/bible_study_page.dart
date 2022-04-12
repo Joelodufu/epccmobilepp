@@ -89,11 +89,6 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                             ),
                           ),
                           AppText(
-                            text: " Week 3",
-                            size: 25,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                          AppText(
                             text: bibleStudyList[bbIndex].date,
                             size: 25,
                           )

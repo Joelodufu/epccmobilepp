@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                  Container(
                       width: double.maxFinite,
-                      height: requiredAspect * 70,
+                      height: 70,
                       
                       decoration: BoxDecoration(
                         color: AppColors.mainColor,

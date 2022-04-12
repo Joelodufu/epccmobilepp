@@ -176,8 +176,10 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                               width: requiredAspect * 400,
                                               child: AppText(
                                                 text: bibleStudyList[index]
+                                                    .contents[1]["content"].length>=30?bibleStudyList[index]
+                                                    .contents[1]["content"].substring(0,30)+"...":bibleStudyList[index]
                                                     .contents[1]["content"],
-                                                size: requiredAspect * 30,
+                                                size: requiredAspect * 40,color:Colors.red,
                                               )),
                                         ],
                                       ),

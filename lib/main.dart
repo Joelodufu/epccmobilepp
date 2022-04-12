@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/AddFire/add_fire.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_app/pages/main_page.dart';
 
-import 'models/devotional.dart';
-
-Future main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(DevotionalAdapter());
-  await Hive.openBox<Devotional>("devotional");
-  runApp( MyApp());
+void main() {
+  runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
