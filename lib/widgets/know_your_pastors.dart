@@ -68,7 +68,7 @@ class KnowYourPastors extends StatelessWidget {
                     ),
               margin: EdgeInsets.only(left: requiredAspect * 20),
               child: Container(
-                  height: 30,
+                  height: 10,
                   color: Colors.white,
                   margin: EdgeInsets.only(top: requiredAspect * 70),
                   child: Column(children: [
