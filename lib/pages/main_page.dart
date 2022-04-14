@@ -19,7 +19,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [
+  List <Widget> pages = [
     HomePage(),
     BibbleStudyPage(),
     MessagePage(),
@@ -33,11 +33,23 @@ class _MainPageState extends State<MainPage> {
   }
   @override
   Widget build(BuildContext context) {
+       var requiredAspect =MediaQuery.of(context).textScaleFactor > MediaQuery.of(context).textScaleFactor? 1: MediaQuery.of(context).textScaleFactor;
+        
+        var requiredPadding =MediaQuery.of(context).padding.top ;
+        var requiredWidth =MediaQuery.of(context).size.width -requiredPadding;
+        var requiredHeight =MediaQuery.of(context).size.height > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.height/548;
+
 
     return Scaffold(
-      body: pages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedFontSize: 2,
+      body:IndexedStack(
+        index:currentIndex,
+        children:pages
+      ),
+      bottomNavigationBar: SafeArea(
+        bottom:true,
+        child:BottomNavigationBar(
+          iconSize:requiredWidth/10,
+        unselectedFontSize:requiredAspect* 2,
         landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
@@ -48,9 +60,10 @@ class _MainPageState extends State<MainPage> {
           elevation: 2,
           items: const [
             BottomNavigationBarItem(  icon: Icon(Icons.home_outlined), label: "Home", tooltip: "Home "),
-            BottomNavigationBarItem(  icon: Icon(Icons.my_library_books_outlined), label: "BS", tooltip: "Bible Stydy "),
-            BottomNavigationBarItem(  icon: Icon(Icons.dynamic_form_outlined), label: "MSG", tooltip: "Msg ")
+            BottomNavigationBarItem(  icon: Icon(Icons.my_library_books_outlined), label: "Bible Study", tooltip: "Bible Stydy "),
+            BottomNavigationBarItem(  icon: Icon(Icons.dynamic_form_outlined), label: "Bible", tooltip: "Msg ")
           ],
+      )
       ),
     );
   }

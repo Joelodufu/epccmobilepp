@@ -52,7 +52,7 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
               body: Container(
                 width: double.maxFinite,
                 height: double.maxFinite,
-                color: Color.fromARGB(255, 235, 235, 235),
+                color: Color.fromARGB(255, 255, 255, 255),
                 child: Column(
                   children: [
                     Container(
@@ -72,18 +72,14 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                       ),
                     ),
                     Container(
+                      color: Colors.white,
                       padding: EdgeInsets.only(left: 10, top: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          AppText(
-                            text: " Bible Study",
-                            size: 25,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
                           Container(
                             child: Icon(
-                              Icons.play_arrow,
+                              Icons.date_range,
                               size: 17,
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
@@ -96,6 +92,9 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                       ),
                     ),
                     Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      color: Colors.white,
+                      width: double.maxFinite,
                       margin: EdgeInsets.only(bottom: 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -103,6 +102,7 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                           AppLargeText(
                             text: bibleStudyList[bbIndex].topic,
                             color: Color.fromARGB(255, 0, 8, 116),
+                            size: 20,
                           ),
                         ],
                       ),
@@ -115,7 +115,6 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                         ),
                         height: size.height * 0.8,
                         padding: EdgeInsets.only(left: 10, right: 10),
-                        margin: EdgeInsets.only(left: 10, right: 10),
                         child: ListView.builder(
                           controller: ScrollController(
                               // or whatever offset you wish
@@ -137,14 +136,15 @@ class _BibleStudyPageState extends State<BibleStudyPage> {
                                           text: bibleStudyList[bbIndex]
                                               .contents[index]["head"],
                                           color: Colors.red,
-                                          size: 25,
+                                          size: 30,
                                         ),
                                       ),
                                       Container(
                                         child: Paragraph(
                                           text: bibleStudyList[bbIndex]
                                               .contents[index]["content"],
-                                          size: 25,
+                                          size: 30,
+                                          color: Colors.black,
                                         ),
                                       )
                                     ],

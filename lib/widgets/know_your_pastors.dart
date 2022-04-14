@@ -25,6 +25,10 @@ class KnowYourPastors extends StatelessWidget {
       "image":"img/anebi.png"
     },
     {
+      "name":"Pst. Otene",
+      "image":"img/otene.png"
+    },
+    {
       "name":"Pst. Abel",
       "image":"img/abelugana.png"
     },
@@ -32,10 +36,7 @@ class KnowYourPastors extends StatelessWidget {
       "name":"Pst. Ken",
       "image":"img/ken.png"
     },
-    {
-      "name":"Pst. Otene",
-      "image":"img/otene.png"
-    },
+    
     {
       "name":"Pst. Mattew",
       "image":"img/mattew.png"
@@ -44,11 +45,16 @@ class KnowYourPastors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var requiredAspect = MediaQuery.of(context).size.width / 540;
+      var requiredAspect =MediaQuery.of(context).textScaleFactor > MediaQuery.of(context).textScaleFactor? 1: MediaQuery.of(context).textScaleFactor;
+        
+        var requiredPadding =MediaQuery.of(context).padding.top ;
+        var requiredWidth =MediaQuery.of(context).size.width -requiredPadding;
+        var requiredHeight =MediaQuery.of(context).size.height > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.height/548;
+
     return Container(
       padding: EdgeInsets.only(
-          top: requiredAspect * 10, bottom: requiredAspect * 10),
-      height: 200,
+          top:10, bottom:  10),
+      height: 300,
       width: double.maxFinite,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(.2),
@@ -59,8 +65,8 @@ class KnowYourPastors extends StatelessWidget {
           itemCount: pastors.length,
           itemBuilder: (_, index) {
             return Container(
-              height:  10,
-              width:  100,
+              height: requiredHeight* 30,
+              width:100,
               decoration:  BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(pastors[index]["image"]),
@@ -68,9 +74,9 @@ class KnowYourPastors extends StatelessWidget {
                     ),
               margin: EdgeInsets.only(left: requiredAspect * 20),
               child: Container(
-                  height: 10,
-                  color: Colors.white,
-                  margin: EdgeInsets.only(top: requiredAspect * 70),
+                  height: 30,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  margin: EdgeInsets.only(top:  requiredHeight* 50),
                   child: Column(children: [
                     AppText(
                       text: pastors[index]["name"],

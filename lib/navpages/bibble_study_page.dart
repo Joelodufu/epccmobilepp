@@ -23,7 +23,16 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
   int bibleStudyIndex = 0;
   @override
   Widget build(BuildContext context) {
-    var requiredAspect =MediaQuery.of(context).size.width > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.width / 540;
+    var requiredAspect = MediaQuery.of(context).textScaleFactor >
+            MediaQuery.of(context).textScaleFactor
+        ? 1
+        : MediaQuery.of(context).textScaleFactor;
+    var requiredPadding = MediaQuery.of(context).padding.top;
+    var requiredWidth = MediaQuery.of(context).size.width - requiredPadding;
+    var requiredHeight =
+        MediaQuery.of(context).size.height > MediaQuery.of(context).size.height
+            ? 1
+            : MediaQuery.of(context).size.height / 548;
 
     return Scaffold(
       body: FutureBuilder(
@@ -36,56 +45,37 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
           } else if (data.hasData) {
             return Scaffold(
               appBar: AppBar(
-            leading: Image.asset(
-              "img/logo.png",
-            ),
-            backgroundColor: AppColors.mainColor,
-            title: Text("The EPCC Inc."),
-            centerTitle: true,
-          ),
+                leading: Image.asset(
+                  "img/logo.png",
+                ),
+                backgroundColor: AppColors.mainColor,
+                title: AppText(
+                          text: "The EPCC Inc.",
+                          size: requiredAspect*25,
+                          color: Colors.white,
+                        ),
+                centerTitle: true,
+              ),
               body: Container(
                 width: double.maxFinite,
                 height: requiredAspect * 1050,
-                color: Color.fromARGB(255, 208, 208, 208),
+                color: Color.fromARGB(255, 227, 227, 227),
                 child: Column(
                   children: [
                     Container(
                       width: double.maxFinite,
-                      height: requiredAspect * 70,
-                      
+                      height: requiredHeight * 30,
                       decoration: BoxDecoration(
-                        color: AppColors.mainColor,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30), 
-                        bottomRight: Radius.circular(30))
-                      ),
+                          color: AppColors.mainColor,
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30))),
                       child: Center(
                         child: AppText(
                           text: "EPCC Bible Study",
-                          size:  25,
+                          size: requiredAspect*25,
                           color: Colors.white,
                         ),
-                      ),
-                    ),
-                    Container(
-                      color:Colors.white,
-                      padding: EdgeInsets.only(
-                          left: requiredAspect * 20, top: requiredAspect * 20),
-                      child: Row(
-                        children: [
-                          AppText(
-                            text: " Bible Study",
-                            size:  20,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                          Container(
-                            child: Icon(
-                              Icons.play_arrow,
-                              size: requiredAspect * 15,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          )
-                        ],
                       ),
                     ),
                     Expanded(
@@ -108,7 +98,12 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                   child: GestureDetector(
                                     onTap: () {
                                       bibleStudyIndex = index;
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => BibleStudyPage(bbIndex:bibleStudyIndex) ));
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BibleStudyPage(
+                                                      bbIndex:
+                                                          bibleStudyIndex)));
                                     },
                                     child: Container(
                                       padding: EdgeInsets.all(15),
@@ -119,8 +114,8 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            height: requiredAspect * 50,
-                                            width: requiredAspect * 250,
+                                            height: requiredHeight * 50,
+                                            width: requiredWidth - 100,
                                             margin: EdgeInsets.only(
                                                 top: requiredAspect * 5,
                                                 bottom: requiredAspect * 5),
@@ -128,8 +123,7 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                                  MainAxisAlignment.spaceBetween,
                                               children: [
                                                 AppButtons(
                                                   color: const Color.fromARGB(
@@ -147,8 +141,9 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                                       .toString(),
                                                 ),
                                                 AppText(
-                                                  text: bibleStudyList[index].date,
-                                                  size: requiredAspect * 40,
+                                                  text: bibleStudyList[index]
+                                                      .date,
+                                                  size: requiredAspect * 35,
                                                   color: Color.fromARGB(
                                                       255, 95, 95, 95),
                                                 )
@@ -159,13 +154,15 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                             color: Colors.white,
                                             width: double.maxFinite,
                                             child: Row(
-                                              crossAxisAlignment:CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  width: requiredAspect * 350,
+                                                  width: requiredWidth - 100,
                                                   child: AppText(
-                                                    text: bibleStudyList[index].topic,
-                                                    size: requiredAspect * 45,
+                                                    text: bibleStudyList[index]
+                                                        .topic,
+                                                    size: requiredAspect * 40,
                                                     color: Colors.black,
                                                   ),
                                                 ),
@@ -176,10 +173,19 @@ class _BibbleStudyPageState extends State<BibbleStudyPage> {
                                               width: requiredAspect * 400,
                                               child: AppText(
                                                 text: bibleStudyList[index]
-                                                    .contents[1]["content"].length>=30?bibleStudyList[index]
-                                                    .contents[1]["content"].substring(0,30)+"...":bibleStudyList[index]
-                                                    .contents[1]["content"],
-                                                size: requiredAspect * 40,color:Colors.red,
+                                                            .contents[1]
+                                                                ["content"]
+                                                            .length >=
+                                                        30
+                                                    ? bibleStudyList[index]
+                                                            .contents[1]
+                                                                ["content"]
+                                                            .substring(0, 30) +
+                                                        "..."
+                                                    : bibleStudyList[index]
+                                                        .contents[1]["content"],
+                                                size: requiredAspect * 35,
+                                                color: Colors.red,
                                               )),
                                         ],
                                       ),

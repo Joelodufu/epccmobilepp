@@ -17,7 +17,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-        var requiredAspect =MediaQuery.of(context).size.width > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.width / 540;
+        var requiredAspect =MediaQuery.of(context).textScaleFactor > MediaQuery.of(context).textScaleFactor? 1: MediaQuery.of(context).textScaleFactor;    
+        var requiredPadding =MediaQuery.of(context).padding.top ;
+        var requiredWidth =MediaQuery.of(context).size.width -requiredPadding;
+        var requiredHeight =MediaQuery.of(context).size.height > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.height/548;
 
     if (MediaQuery.of(context).size.width >
         MediaQuery.of(context).size.height) {
@@ -37,59 +40,58 @@ class _HomePageState extends State<HomePage> {
           ),
           body: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                  Container(
                       width: double.maxFinite,
-                      height: 70,
+                      height: requiredHeight* 30,
                       
                       decoration: BoxDecoration(
                         color: AppColors.mainColor,
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30), 
-                        bottomRight: Radius.circular(30))
+                          bottomLeft: Radius.circular(requiredAspect*30), 
+                        bottomRight: Radius.circular(requiredAspect*30))
                       ),
                       child: Center(
                         child: AppText(
                           text: "Welcome Home!!!",
-                          size:  25,
+                          size:  requiredAspect*25,
                           color: Colors.white,
                         ),
                       ),
                     ),
                
                 Container(
-                  padding: EdgeInsets.only(left: 16),
+                  padding: EdgeInsets.only(left:10),
                   child: Center(
                     child: AppText(
                       text: "ANNOUNCEMENT",
                       color: Color.fromARGB(255, 131, 0, 0),
-                      size: 25,
+                      size:requiredAspect* 25,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 2,
+                  height: requiredHeight*2,
                 ),
                 Container(
                   color: Colors.white,
-                  height: 70,
-                  padding: EdgeInsets.only(left: 16),
+                  height:  requiredHeight*70,
+                  padding: EdgeInsets.only(left: 10),
                   child: Center(
                     child: AnimatedTextKit(
                       animatedTexts: [
                         TypewriterAnimatedText(
-                          'Easther Retreat is coming up, the venue will be the Anmoda Main Santuary of Praise ',
+                          'Easter Retreat is coming up, the venue will be the Anmoda Main Santuary of Praise ',
                           textStyle: TextStyle(
-                              fontSize: 16.0,
+                              fontSize:requiredAspect* 25.0,
                               color: Color.fromARGB(255, 26, 50, 85),
                               fontStyle: FontStyle.italic),
                           speed: const Duration(milliseconds: 100),
                         ),
                         TypewriterAnimatedText(
-                          'Remember to Pray for the upcomming program, Let The Acts of God be made manifest',
+                          'Remember to Pray for the upcoming program, Let The Acts of God be made manifest',
                           textStyle: TextStyle(
-                              fontSize: 16,
+                              fontSize:requiredAspect* 025,
                               color: Color.fromARGB(255, 26, 50, 85),
                               fontStyle: FontStyle.italic),
                           speed: const Duration(milliseconds: 100),
@@ -97,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         TypewriterAnimatedText(
                           'The pulpit exchange that is sheduled for Jamuary have been postponed for next year',
                           textStyle: TextStyle(
-                              fontSize: 16,
+                              fontSize: requiredAspect*025,
                               color: Color.fromARGB(255, 26, 50, 85),
                               fontStyle: FontStyle.italic),
                           speed: const Duration(milliseconds: 100),
@@ -105,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                         WavyAnimatedText(
                           'The Daily Devotionals is ready, get one to join the pulpit at home program',
                           textStyle: TextStyle(
-                              fontSize: 16,
+                              fontSize: requiredAspect*025,
                               color: Color.fromARGB(255, 26, 50, 85),
                               fontStyle: FontStyle.italic),
                           speed: const Duration(milliseconds: 100),
@@ -119,41 +121,41 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: requiredHeight* 20,
                 ),
                 Center(
                   child: Container(
                     color: Colors.white,
-                    width: 520,
-                    height: 600,
+                    width: requiredWidth*520,
+                    height:  requiredHeight*600,
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 10,
+                          height: requiredHeight* 10,
                         ),
                         AppText(
                           text: "🔥🔥DAILY FUEL FOR DAILY FIRE🔥🔥",
                           color: Colors.black54,
-                          size: 30,
+                          size: requiredAspect*30,
                         ),
                         SizedBox(
-                          height: 9,
+                          height:  requiredHeight*9,
                         ),
                         AppText(
                           text: "Make Prayer a Lifestyle",
                           color: Color.fromARGB(255, 32, 0, 107),
-                          size: 30,
+                          size: requiredAspect*30,
                         ),
                         SizedBox(
-                          height: 10,
+                          height:  requiredHeight*10,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 15, right: 10),
+                          padding: EdgeInsets.only(left: 10, right: 10),
                           child: Paragraph(
                             text:
                                 "In the same way, prayer is essential in this ongoing warfare, Pray Hard and Long. Pray for your brothers and sisters, Keep your eyes open, Keep each other's spirit up so that no one falls behind or drops out",
                             color: Color.fromARGB(255, 0, 0, 0),
-                            size: 25,
+                            size:requiredAspect* 25,
                           ),
                         ),
                         SizedBox(
@@ -163,18 +165,18 @@ class _HomePageState extends State<HomePage> {
                             child: AppText(
                           text: "Ephesians 6:18",
                           color: Colors.red,
-                          size: 30,
+                          size: requiredAspect*30,
                         )),
                         SizedBox(
                           height: 30,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 15, right: 10),
+                          padding: EdgeInsets.only(left: 20, right: 20),
                           child: AppText(
                             text:
                                 "The reason for prayer is not to convince God that you are really serious about your objective of praying. Rather, it is about what spending time in fellowship with him does in your spirit",
                             color: Color.fromARGB(255, 0, 0, 0),
-                            size: 25,
+                            size:requiredAspect* 25,
                             style: FontStyle.italic,
                           ),
                         ),
@@ -185,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                             child: AppText(
                           text: "PRAYER",
                           color: Colors.red,
-                          size: 25,
+                          size:requiredAspect* 25,
                         )),
                         Expanded(
                           child: Center(
@@ -194,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                 child: AppText(
                                   text:
                                       'Dear Father, Thank you for the privilege of fellowship with you through the spirit of prayer',
-                                  size: 30,
+                                  size: requiredAspect*30,
                                   color: Color.fromARGB(255, 0, 112, 143),
                                 )),
                           ),
@@ -204,12 +206,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: requiredHeight* 10,
                 ),
                 Center(
                     child: AppText(
                   text: "Know Your Pastors",
-                  size: 35,
+                  size:requiredAspect* 35,
                   color: Color.fromARGB(255, 169, 126, 0),
                 )),
                 Container(
@@ -220,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                       Positioned(
                         child: Container(
                           width: double.maxFinite,
-                          height: 50,
+                          height: requiredHeight* 50,
                           color: Colors.black,
                         ),
                       ),

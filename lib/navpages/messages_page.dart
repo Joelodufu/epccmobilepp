@@ -147,14 +147,20 @@ class _MessagePageState extends State<MessagePage> {
 
   @override
   Widget build(BuildContext context) {
-    var requiredAspect = MediaQuery.of(context).size.width / 540;
+       var requiredAspect =MediaQuery.of(context).textScaleFactor > MediaQuery.of(context).textScaleFactor? 1: MediaQuery.of(context).textScaleFactor;
+               var requiredHeight =MediaQuery.of(context).size.height > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.height/548;
+
     return Scaffold(
       appBar: AppBar(
             leading: Image.asset(
               "img/logo.png",
             ),
             backgroundColor: AppColors.mainColor,
-            title: Text("The EPCC Inc."),
+            title: AppText(
+                          text: "The EPCC Inc.",
+                          size: requiredAspect*25,
+                          color: Colors.white,
+                        ),
             centerTitle: true,
           ),
       body: FutureBuilder(
@@ -172,7 +178,7 @@ class _MessagePageState extends State<MessagePage> {
                 child: Column(children: [
                    Container(
                       width: double.maxFinite,
-                      height: requiredAspect * 70,
+                      height: requiredHeight * 30,
                       
                       decoration: BoxDecoration(
                         color: AppColors.mainColor,
@@ -194,7 +200,7 @@ class _MessagePageState extends State<MessagePage> {
                     child: Container(
                       width: double.maxFinite,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           //BOOK SELECTION DROPDOWN
                           //======================================
@@ -209,7 +215,7 @@ class _MessagePageState extends State<MessagePage> {
                             items: bibleList.map((e) {
                               return DropdownMenuItem(
                                 value: e.book.toString(),
-                                child: Text(e.book.toString()),
+                                child: Text(e.book.toString(), style: TextStyle(fontSize: requiredAspect*20),),
                               );
                             }).toList(),
 
@@ -298,7 +304,7 @@ class _MessagePageState extends State<MessagePage> {
                             items: chapterList.map((e) {
                               return DropdownMenuItem(
                                 value: e.toString(),
-                                child: Text(e.toString()),
+                                child: Text(e.toString(),style:  TextStyle(fontSize: requiredAspect*20),),
                               );
                             }).toList(),
 
@@ -317,30 +323,7 @@ class _MessagePageState extends State<MessagePage> {
 
                           //VERSES SELECTION DROPDOWN
                           //======================================
-                          DropdownButton(
-                            // Initial Value
-                            value: dropDownVerse,
-
-                            // Down Arrow Icon
-                            icon: const Icon(Icons.keyboard_arrow_down),
-
-                            // Array list of items
-                            items: versesIndexLists.map((e) {
-                              return DropdownMenuItem(
-                                value: e.toString(),
-                                child: Text(e.toString()),
-                              );
-                            }).toList(),
-
-                            // After selecting the desired option,it will
-                            // change button value to selected value
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropDownVerse = newValue!;
-                                verseIndex = getVerseIndex(newValue);
-                              });
-                            },
-                          ),
+                         
                         ],
                       ),
                     ),

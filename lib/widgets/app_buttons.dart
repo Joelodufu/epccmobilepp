@@ -26,15 +26,18 @@ class AppButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var requiredAspectRario = MediaQuery.of(context).size.width/540;
+var requiredAspect =MediaQuery.of(context).textScaleFactor > MediaQuery.of(context).textScaleFactor? 1: MediaQuery.of(context).textScaleFactor;    
+        var requiredPadding =MediaQuery.of(context).padding.top ;
+        var requiredWidth =MediaQuery.of(context).size.width -requiredPadding;
+        var requiredHeight =MediaQuery.of(context).size.height > MediaQuery.of(context).size.height? 1: MediaQuery.of(context).size.height/548;
 
     return Container(
-      width: size,
-      height: size,
+      width: requiredWidth/10,
+      height:  requiredWidth/10,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(requiredAspectRario*15),
+          borderRadius: BorderRadius.circular(requiredAspect*15),
           color: backgroundColor,
-          border: Border.all(color: borderColor, width:requiredAspectRario* 1.0)),
+          border: Border.all(color: borderColor, width:requiredAspect* 1.0)),
       child: isIcon == false
           ? Center(
               child: AppText(

@@ -18,6 +18,7 @@ class AppText extends StatelessWidget {
 
     return Text(
       text,
+      textAlign: TextAlign.start,
       style: TextStyle(
           color: color,
           fontSize:requiredAspectRario*size,
