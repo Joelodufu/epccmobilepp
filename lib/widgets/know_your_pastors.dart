@@ -76,7 +76,7 @@ class KnowYourPastors extends StatelessWidget {
               child: Container(
                   height: 30,
                   color: Color.fromARGB(255, 255, 255, 255),
-                  margin: EdgeInsets.only(top:  requiredHeight* 50),
+                  margin: EdgeInsets.only(top:  requiredWidth* 50),
                   child: Column(children: [
                     AppText(
                       text: pastors[index]["name"],
